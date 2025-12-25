@@ -1,7 +1,14 @@
 variable "cluster_name" {
   type = string
 }
-
+variable "env" {
+  description = "Environment name"
+  type        = string
+}
+variable "region" {
+  description = "AWS region"
+  type        = string
+}
 variable "kubernetes_version" {
   type = string
 }
