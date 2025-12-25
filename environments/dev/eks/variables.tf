@@ -9,6 +9,10 @@ variable "region" {
   description = "AWS region"
   type        = string
 }
+# variable "cluster_security_group_id" {
+#   type = list(string)
+  
+# }
 variable "kubernetes_version" {
   type = string
 }

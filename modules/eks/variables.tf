@@ -11,6 +11,10 @@ variable "vpc_id" {
   type = string
 }
 
+# variable "cluster_security_group_id" {
+#   type = list(string)
+  
+# }
 variable "subnet_ids" {
   type = list(string)
 
