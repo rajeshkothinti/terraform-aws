@@ -32,3 +32,4 @@ variable "max_size" {
 variable "tags" {
   type = map(string)
 }
+

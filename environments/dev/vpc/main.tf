@@ -8,5 +8,6 @@ module "vpc" {
   public_subnet_cidrs  = var.public_subnet_cidrs
   private_subnet_cidrs = var.private_subnet_cidrs
   availability_zones   = var.availability_zones
+  eks_cluster_name =     var.eks_cluster_name
   tags                  = var.tags
 }
