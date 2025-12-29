@@ -4,7 +4,7 @@ variable "cluster_name" {
 
 variable "kubernetes_version" {
   type    = string
-  default = "1.29"
+  # default = "1.29"
 }
 
 variable "vpc_id" {
@@ -47,4 +47,7 @@ variable "max_size" {
 variable "tags" {
   type    = map(string)
   default = {}
+}
+variable  "coredns_addon_verion"{
+  type = string
 }

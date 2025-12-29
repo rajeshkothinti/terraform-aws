@@ -24,8 +24,7 @@ resource "aws_eks_cluster" "this" {
   vpc_config {
     subnet_ids              = var.subnet_ids
     endpoint_private_access = true
-    endpoint_public_access  = false
-    # security_group_ids = var.cluster_security_group_id
+    endpoint_public_access  = true
   }
 
   tags = var.tags
@@ -53,6 +52,17 @@ resource "aws_iam_role_policy_attachment" "node_policies" {
 
   role       = aws_iam_role.node.name
   policy_arn = each.value
+}
+
+resource "aws_eks_addon" "vpccni" {
+  cluster_name = aws_eks_cluster.this.name
+  addon_name   = "vpc-cni"
+}
+resource "aws_eks_addon" "coredns" {
+  cluster_name                = aws_eks_cluster.this.name
+  addon_name                  = "coredns"
+  addon_version               = var.coredns_addon_verion #e.g., previous version v1.9.3-eksbuild.3 and the new version is v1.10.1-eksbuild.1
+  resolve_conflicts_on_update = "PRESERVE"
 }
 
 resource "aws_eks_node_group" "this" {
